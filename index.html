@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Look My Watch — Montres de Collection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <span class="logo-look">LOOK</span>
+        <span class="logo-divider">MY</span>
+        <span class="logo-watch">WATCH</span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#collection">Collection</a>
+        <a href="#about">À propos</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Collection Exclusive</p>
+      <h1 class="hero-title">L'Art du<br/><span class="gold">Temps</span></h1>
+      <p class="hero-subtitle">Montres Seiko modifiées — pièces uniques inspirées par la culture, le sport et les icônes.</p>
+      <a href="#collection" class="btn btn-primary">Découvrir la Collection</a>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-ring hero-ring--1"></div>
+      <div class="hero-ring hero-ring--2"></div>
+      <div class="hero-ring hero-ring--3"></div>
+      <div class="hero-clock">
+        <div class="clock-face">
+          <div class="clock-hand clock-hand--hour" id="hourHand"></div>
+          <div class="clock-hand clock-hand--minute" id="minuteHand"></div>
+          <div class="clock-hand clock-hand--second" id="secondHand"></div>
+          <div class="clock-center"></div>
+          <span class="clock-brand">SEIKO</span>
+          <div class="clock-markers"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BAND -->
+  <div class="band">
+    <div class="band-inner">
+      <span>GMT MASTER</span><span class="sep">✦</span>
+      <span>SUBMARINER</span><span class="sep">✦</span>
+      <span>DAYTONA</span><span class="sep">✦</span>
+      <span>DATEJUST</span><span class="sep">✦</span>
+      <span>SEIKO MOD</span><span class="sep">✦</span>
+      <span>GMT MASTER</span><span class="sep">✦</span>
+      <span>SUBMARINER</span><span class="sep">✦</span>
+      <span>DAYTONA</span><span class="sep">✦</span>
+      <span>DATEJUST</span><span class="sep">✦</span>
+      <span>SEIKO MOD</span><span class="sep">✦</span>
+    </div>
+  </div>
+
+  <!-- COLLECTION -->
+  <section class="collection" id="collection">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Nos Modèles</p>
+        <h2 class="section-title">La Collection</h2>
+        <p class="section-subtitle">Chaque montre raconte une histoire. Trouvez la vôtre.</p>
+      </div>
+
+      <!-- FILTERS -->
+      <div class="filters" id="filters">
+        <button class="filter-btn active" data-filter="all">Tous</button>
+        <button class="filter-btn" data-filter="gmt">GMT</button>
+        <button class="filter-btn" data-filter="submariner">Submariner</button>
+        <button class="filter-btn" data-filter="daytona">Daytona</button>
+        <button class="filter-btn" data-filter="datejust">Datejust</button>
+        <button class="filter-btn" data-filter="pop-culture">Pop Culture</button>
+        <button class="filter-btn" data-filter="brands">Marques</button>
+      </div>
+
+      <!-- GRID -->
+      <div class="products-grid" id="productsGrid">
+
+        <article class="product-card" data-category="gmt pop-culture">
+          <div class="product-image" style="--accent: #1a3a6b; --accent2: #0d0d0d;">
+            <div class="watch-preview batman">
+              <div class="watch-bezel" style="background: conic-gradient(#0d0d0d 0% 50%, #1a3a6b 50% 100%)"></div>
+              <div class="watch-dial"></div>
+              <span class="watch-label">GMT</span>
+            </div>
+            <div class="product-badge">Icône</div>
+          </div>
+          <div class="product-info">
+            <div class="product-meta">
+              <span class="product-type">GMT Master II</span>
+              <div class="product-colors">
+                <span class="color-dot" style="background:#0d0d0d"></span>
+                <span class="color-dot" style="background:#1a3a6b"></span>
+              </div>
+            </div>
+            <h3 class="product-name">BATMAN</h3>
+            <p class="product-desc">Cadran noir, lunette bi-couleur noir/bleu. L'élégance sombre de Gotham au poignet.</p>
+            <div class="product-footer">
+              <a href="#" class="btn btn-secondary" data-watch="batman">Voir sur Amazon →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="daytona brands">
+          <div class="product-image" style="--accent: #f5f5f5; --accent2: #1a1a1a;">
+            <div class="watch-preview panda">
+              <div class="watch-bezel" style="background: #1a1a1a"></div>
+              <div class="watch-dial" style="background: #f0f0f0"></div>
+              <span class="watch-label" style="color:#1a1a1a">DAYTONA</span>
+            </div>
+            <div class="product-badge new">Bestseller</div>
+          </div>
+          <div class="product-info">
+            <div class="product-meta">
+              <span class="product-type">Daytona Chrono</span>
+              <div class="product-colors">
+                <span class="color-dot" style="background:#f0f0f0; border:1px solid #ccc"></span>
+                <span class="color-dot" style="background:#1a1a1a"></span>
+              </div>
+            </div>
+            <h3 class="product-name">PANDA</h3>
+            <p class="product-desc">Cadran blanc, sous-compteurs noirs. Le chronographe iconique dans sa version la plus pure.</p>
+            <div class="product-footer">
+              <a href="#" class="btn btn-secondary" data-watch="panda">Voir sur Amazon →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="submariner pop-culture">
+          <div class="product-image" style="--accent: #1a6b2a; --accent2: #0d3b18;">
+            <div class="watch-preview hulk">
+              <div class="watch-bezel" style="background: #1a6b2a"></div>
+              <div class="watch-dial" style="background: #155224"></div>
+              <span class="watch-label">SUB</span>
+            </div>
+            <div class="product-badge">Exclusif</div>
+          </div>
+          <div class="product-info">
+            <div class="product-meta">
+              <span class="product-type">Submariner</span>
+              <div class="product-colors">
+                <span class="color-dot" style="background:#1a6b2a"></span>
+                <span class="color-dot" style="background:#155224"></span>
+              </div>
+            </div>
+            <h3 class="product-name">HULK</h3>
+            <p class="product-desc">Full green — lunette et cadran vert intense. La puissance à l'état pur.</p>
+            <div class="product-footer">
+              <a href="#" class="btn btn-secondary" data-watch="hulk">Voir sur Amazon →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="gmt brands">
+          <div class="product-image" style="--accent: #c41e3a; --accent2: #002fa7;">
+            <div class="watch-preview pepsi">
+              <div class="watch-bezel" style="background: conic-gradient(#002fa7 0% 50%, #c41e3a 50% 100%)"></div>
+              <div class="watch-dial"></div>
+              <span class="watch-label">GMT</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-meta">
+              <span class="product-type">GMT Master — Jubilee</span>
+              <div class="product-colors">
+                <span class="color-dot" style="background:#002fa7"></span>
+                <span class="color-dot" style="background:#c41e3a"></span>
+              </div>
+            </div>
+            <h3 class="product-name">PEPSI</h3>
+            <p class="product-desc">Lunette rouge/bleu iconique sur bracelet Jubilee. La référence absolue du GMT.</p>
+            <div class="product-footer">
+              <a href="#" class="btn btn-secondary" data-watch="pepsi">Voir sur Amazon →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="datejust brands">
+          <div class="product-image" style="--accent: #2d5a27; --accent2: #1a1a2e;">
+            <div class="watch-preview wimbledon">
+              <div class="watch-bezel" style="background: linear-gradient(45deg, #c0c0c0, #e8e8e8)"></div>
+              <div class="watch-dial" style="background: #2a2a2a"></div>
+              <span class="watch-label" style="color:#4caf50">DJ</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-meta">
+              <span class="product-type">Datejust — Jubilee</span>
+              <div class="product-colors">
+                <span class="color-dot" style="background:#2a2a2a"></span>
+                <span class="color-dot" style="background:#4caf50"></span>
+              </div>
+            </div>
+            <h3 class="product-name">WIMBLEDON</h3>
+            <p class="product-desc">Cadran ardoise sombre, chiffres romains verts. L'élégance des courts du Grand Chelem.</p>
+            <div class="product-footer">
+              <a href="#" class="btn btn-secondary" data-watch="wimbledon">Voir sur Amazon →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="submariner brands">
+          <div class="product-image" style="--accent: #1a6b2a; --accent2: #0d0d0d;">
+            <div class="watch-preview starbucks">
+              <div class="watch-bezel" style="background: #1a6b2a"></div>
+              <div class="watch-dial" style="background: #0d0d0d"></div>
+              <span class="watch-label">SUB</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-meta">
+              <span class="product-type">Submariner</span>
+              <div class="product-colors">
+                <span class="color-dot" style="background:#1a6b2a"></span>
+                <span class="color-dot" style="background:#0d0d0d"></span>
+              </div>
+            </div>
+            <h3 class="product-name">STARBUCKS</h3>
+            <p class="product-desc">Lunette verte, cadran noir profond. La discrétion du plongeur avec l'âme du café.</p>
+            <div class="product-footer">
+              <a href="#" class="btn btn-secondary" data-watch="starbucks">Voir sur Amazon →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="gmt brands">
+          <div class="product-image" style="--accent: #cc0000; --accent2: #0d0d0d;">
+            <div class="watch-preview cocacola">
+              <div class="watch-bezel" style="background: conic-gradient(#0d0d0d 0% 50%, #cc0000 50% 100%)"></div>
+              <div class="watch-dial"></div>
+              <span class="watch-label">GMT</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-meta">
+              <span class="product-type">GMT Coke</span>
+              <div class="product-colors">
+                <span class="color-dot" style="background:#0d0d0d"></span>
+                <span class="color-dot" style="background:#cc0000"></span>
+              </div>
+            </div>
+            <h3 class="product-name">COCA-COLA</h3>
+            <p class="product-desc">Lunette noir/rouge, cadran sombre. L'énergie rouge intemporelle au poignet.</p>
+            <div class="product-footer">
+              <a href="#" class="btn btn-secondary" data-watch="cocacola">Voir sur Amazon →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="gmt brands">
+          <div class="product-image" style="--accent: #1a6b2a; --accent2: #0d0d0d;">
+            <div class="watch-preview sprite">
+              <div class="watch-bezel" style="background: conic-gradient(#0d0d0d 0% 50%, #1a6b2a 50% 100%)"></div>
+              <div class="watch-dial"></div>
+              <span class="watch-label">GMT</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-meta">
+              <span class="product-type">GMT — Jubilee</span>
+              <div class="product-colors">
+                <span class="color-dot" style="background:#0d0d0d"></span>
+                <span class="color-dot" style="background:#1a6b2a"></span>
+              </div>
+            </div>
+            <h3 class="product-name">SPRITE</h3>
+            <p class="product-desc">Lunette noir/vert sur bracelet Jubilee. La fraîcheur cristalline en acier inoxydable.</p>
+            <div class="product-footer">
+              <a href="#" class="btn btn-secondary" data-watch="sprite">Voir sur Amazon →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="gmt pop-culture">
+          <div class="product-image" style="--accent: #6a0dad; --accent2: #0d0d0d;">
+            <div class="watch-preview joker">
+              <div class="watch-bezel" style="background: conic-gradient(#0d0d0d 0% 50%, #6a0dad 50% 100%)"></div>
+              <div class="watch-dial"></div>
+              <span class="watch-label">GMT</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-meta">
+              <span class="product-type">GMT</span>
+              <div class="product-colors">
+                <span class="color-dot" style="background:#0d0d0d"></span>
+                <span class="color-dot" style="background:#6a0dad"></span>
+              </div>
+            </div>
+            <h3 class="product-name">JOKER</h3>
+            <p class="product-desc">Lunette noir/violet. Le chaos élégant du Prince du Crime au poignet.</p>
+            <div class="product-footer">
+              <a href="#" class="btn btn-secondary" data-watch="joker">Voir sur Amazon →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="gmt pop-culture">
+          <div class="product-image" style="--accent: #1a3a6b; --accent2: #0d0d0d;">
+            <div class="watch-preview batgirl">
+              <div class="watch-bezel" style="background: conic-gradient(#0d0d0d 0% 50%, #1a3a6b 50% 100%)"></div>
+              <div class="watch-dial"></div>
+              <span class="watch-label">GMT</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-meta">
+              <span class="product-type">GMT — Jubilee</span>
+              <div class="product-colors">
+                <span class="color-dot" style="background:#0d0d0d"></span>
+                <span class="color-dot" style="background:#1a3a6b"></span>
+              </div>
+            </div>
+            <h3 class="product-name">BATGIRL</h3>
+            <p class="product-desc">Lunette noir/bleu sur Jubilee. La justice nocturne, en version féminine et acérée.</p>
+            <div class="product-footer">
+              <a href="#" class="btn btn-secondary" data-watch="batgirl">Voir sur Amazon →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="gmt brands">
+          <div class="product-image" style="--accent: #c9a84c; --accent2: #3b1a0a;">
+            <div class="watch-preview rootbeer">
+              <div class="watch-bezel" style="background: conic-gradient(#1a0a00 0% 50%, #8b4513 50% 100%)"></div>
+              <div class="watch-dial" style="background: #0d0d0d"></div>
+              <span class="watch-label" style="color:#c9a84c">GMT II</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-meta">
+              <span class="product-type">GMT Master II — Bicolore</span>
+              <div class="product-colors">
+                <span class="color-dot" style="background:#c9a84c"></span>
+                <span class="color-dot" style="background:#8b4513"></span>
+                <span class="color-dot" style="background:#0d0d0d"></span>
+              </div>
+            </div>
+            <h3 class="product-name">ROOT BEER</h3>
+            <p class="product-desc">Bicolore or/acier, lunette noir/brun. La pièce la plus luxueuse de la collection.</p>
+            <div class="product-footer">
+              <a href="#" class="btn btn-secondary" data-watch="rootbeer">Voir sur Amazon →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="daytona pop-culture">
+          <div class="product-image" style="--accent: #888; --accent2: #1a1a1a;">
+            <div class="watch-preview ghost">
+              <div class="watch-bezel" style="background: #1a1a1a"></div>
+              <div class="watch-dial" style="background: #b0b0b0"></div>
+              <span class="watch-label" style="color:#1a1a1a">DAYTONA</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-meta">
+              <span class="product-type">Daytona Chrono</span>
+              <div class="product-colors">
+                <span class="color-dot" style="background:#b0b0b0"></span>
+                <span class="color-dot" style="background:#1a1a1a"></span>
+              </div>
+            </div>
+            <h3 class="product-name">GHOST</h3>
+            <p class="product-desc">Cadran gris argenté, sous-compteurs noirs. L'invisible qui marque les esprits.</p>
+            <div class="product-footer">
+              <a href="#" class="btn btn-secondary" data-watch="ghost">Voir sur Amazon →</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container about-grid">
+      <div class="about-text">
+        <p class="section-eyebrow">Notre Histoire</p>
+        <h2 class="section-title">Pourquoi <span class="gold">Look My Watch</span> ?</h2>
+        <p>Chaque montre de notre collection est une pièce Seiko soigneusement modifiée — cadran, lunette, bracelet — pour créer une identité unique inspirée par la culture pop, le sport et les grandes marques mondiales.</p>
+        <p>Notre philosophie : offrir la qualité mécanique japonaise dans un habillage que personne d'autre ne portera.</p>
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-number">21+</span>
+            <span class="stat-label">Modèles uniques</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Seiko authentique</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">★ 4.9</span>
+            <span class="stat-label">Note Amazon</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-card">
+          <div class="about-watch-display">
+            <div class="aw-outer"></div>
+            <div class="aw-inner"></div>
+            <div class="aw-dial">
+              <span class="aw-brand">SEIKO</span>
+              <span class="aw-model">MOD</span>
+            </div>
+          </div>
+          <p class="about-caption">Qualité Seiko · Design Unique</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <p class="section-eyebrow">Disponibles maintenant</p>
+      <h2>Trouvez votre montre<br/><span class="gold">sur Amazon</span></h2>
+      <p class="cta-sub">Livraison rapide · Retours gratuits · Garantie incluse</p>
+      <a href="#collection" class="btn btn-primary btn-large">Voir toute la collection</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="contact">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <span class="logo-look">LOOK</span><span class="logo-divider"> MY </span><span class="logo-watch">WATCH</span>
+        <p>Montres Seiko modifiées. Des pièces uniques pour les esprits libres.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Collection</h4>
+        <a href="#collection">Batman</a>
+        <a href="#collection">Panda</a>
+        <a href="#collection">Hulk</a>
+        <a href="#collection">Pepsi</a>
+        <a href="#collection">Wimbledon</a>
+      </div>
+      <div class="footer-links">
+        <h4>Informations</h4>
+        <a href="#">À propos</a>
+        <a href="#">Contact</a>
+        <a href="#">FAQ</a>
+        <a href="#">Garantie</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Nous contacter</h4>
+        <p>Des questions ? Écrivez-nous.</p>
+        <a href="mailto:contact@lookmywatch.com" class="btn btn-outline">contact@lookmywatch.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Look My Watch · Tous droits réservés</p>
+      <p>Vendu sur <strong>Amazon</strong> · Paiement sécurisé</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
