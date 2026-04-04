@@ -1,0 +1,13 @@
+{
+  "name": "look-my-watch",
+  "version": "1.0.0",
+  "description": "Look My Watch — Site vitrine de montres Seiko modifiées",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
