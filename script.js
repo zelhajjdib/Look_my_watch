@@ -1,101 +1,354 @@
 /* ===========================
-   LOOK MY WATCH — JS
+   LOOK MY WATCH — SCRIPT
 =========================== */
 
-// Header scroll effect
+/* ---------------------------
+   DONNÉES PRODUITS
+   → Ajoute tes liens Amazon dans `amazon`
+   → Ajoute tes images dans `img` (ex: '/images/batman.jpg')
+--------------------------- */
+const watches = [
+  {
+    id: 'batman',
+    name: 'BATMAN',
+    type: 'GMT Master II',
+    categories: 'gmt pop-culture',
+    badge: 'Icône',
+    desc: 'Cadran noir, lunette bi-couleur noir/bleu. L\'élégance sombre de Gotham au poignet.',
+    colors: ['#0d0d0d', '#1a3a6b'],
+    accent: '#1a3a6b',
+    img: '/images/batman.png',
+    amazon: 'https://www.amazon.com/s?k=seiko+mod+batman',
+  },
+  {
+    id: 'panda',
+    name: 'PANDA',
+    type: 'Daytona Chronographe',
+    categories: 'daytona brands',
+    badge: 'Bestseller',
+    badgeNew: true,
+    desc: 'Cadran blanc, sous-compteurs noirs. Le chronographe iconique dans sa version la plus pure.',
+    colors: ['#f0f0f0', '#1a1a1a'],
+    accent: '#e0e0e0',
+    img: '/images/panda.png',
+    amazon: 'https://www.amazon.com/s?k=seiko+mod+panda+daytona',
+  },
+  {
+    id: 'hulk',
+    name: 'HULK',
+    type: 'Submariner',
+    categories: 'submariner pop-culture',
+    badge: 'Exclusif',
+    desc: 'Full green — lunette et cadran vert intense. La puissance à l\'état pur.',
+    colors: ['#1a6b2a', '#155224'],
+    accent: '#1a6b2a',
+    img: '/images/hulk.png',
+    amazon: 'https://www.amazon.com/s?k=seiko+mod+hulk+submariner',
+  },
+  {
+    id: 'pepsi',
+    name: 'PEPSI',
+    type: 'GMT Master — Jubilee',
+    categories: 'gmt brands',
+    desc: 'Lunette rouge/bleu iconique sur bracelet Jubilee. La référence absolue du GMT.',
+    colors: ['#002fa7', '#c41e3a'],
+    accent: '#c41e3a',
+    img: '/images/pepsi.png',
+    amazon: 'https://www.amazon.com/s?k=seiko+mod+pepsi+gmt',
+  },
+  {
+    id: 'wimbledon',
+    name: 'WIMBLEDON',
+    type: 'Datejust — Jubilee',
+    categories: 'datejust brands',
+    desc: 'Cadran ardoise sombre, chiffres romains verts. L\'élégance des courts du Grand Chelem.',
+    colors: ['#2a2a2a', '#4caf50'],
+    accent: '#4caf50',
+    img: '/images/wimbledon.png',
+    amazon: 'https://www.amazon.com/s?k=seiko+mod+wimbledon+datejust',
+  },
+  {
+    id: 'starbucks',
+    name: 'STARBUCKS',
+    type: 'Submariner',
+    categories: 'submariner brands',
+    desc: 'Lunette verte, cadran noir profond. La discrétion du plongeur avec l\'âme du café.',
+    colors: ['#1a6b2a', '#0d0d0d'],
+    accent: '#1a6b2a',
+    img: '/images/starbucks.png',
+    amazon: 'https://www.amazon.com/s?k=seiko+mod+starbucks+submariner',
+  },
+  {
+    id: 'cocacola',
+    name: 'COCA-COLA',
+    type: 'GMT Coke',
+    categories: 'gmt brands',
+    desc: 'Lunette noir/rouge, cadran sombre. L\'énergie rouge intemporelle au poignet.',
+    colors: ['#0d0d0d', '#cc0000'],
+    accent: '#cc0000',
+    img: '/images/coca.png',
+    amazon: 'https://www.amazon.com/s?k=seiko+mod+coca+cola+gmt',
+  },
+  {
+    id: 'sprite',
+    name: 'SPRITE',
+    type: 'GMT — Jubilee',
+    categories: 'gmt brands',
+    desc: 'Lunette noir/vert sur bracelet Jubilee. La fraîcheur cristalline en acier inoxydable.',
+    colors: ['#0d0d0d', '#1a6b2a'],
+    accent: '#1a6b2a',
+    img: '/images/sprite.png',
+    amazon: 'https://www.amazon.com/s?k=seiko+mod+sprite+gmt',
+  },
+  {
+    id: 'joker',
+    name: 'JOKER',
+    type: 'GMT',
+    categories: 'gmt pop-culture',
+    desc: 'Lunette noir/violet. Le chaos élégant du Prince du Crime au poignet.',
+    colors: ['#0d0d0d', '#6a0dad'],
+    accent: '#6a0dad',
+    img: '/images/joker.png',
+    amazon: 'https://www.amazon.com/s?k=seiko+mod+joker+gmt',
+  },
+  {
+    id: 'batgirl',
+    name: 'BATGIRL',
+    type: 'GMT — Jubilee',
+    categories: 'gmt pop-culture',
+    desc: 'Lunette noir/bleu sur Jubilee. La justice nocturne, en version féminine et acérée.',
+    colors: ['#0d0d0d', '#1a3a6b'],
+    accent: '#1a3a6b',
+    img: '/images/batwoman.png',
+    amazon: 'https://www.amazon.com/s?k=seiko+mod+batgirl+gmt',
+  },
+  {
+    id: 'rootbeer',
+    name: 'ROOT BEER',
+    type: 'GMT Master II — Bicolore',
+    categories: 'gmt brands',
+    desc: 'Bicolore or/acier, lunette noir/brun. La pièce la plus luxueuse de la collection.',
+    colors: ['#c9a84c', '#8b4513', '#0d0d0d'],
+    accent: '#c9a84c',
+    img: '/images/h.png',
+    amazon: 'https://www.amazon.com/s?k=seiko+mod+root+beer+gmt',
+  },
+  {
+    id: 'ghost',
+    name: 'GHOST',
+    type: 'Daytona Chronographe',
+    categories: 'daytona pop-culture',
+    desc: 'Cadran gris argenté, sous-compteurs noirs. L\'invisible qui marque les esprits.',
+    colors: ['#b0b0b0', '#1a1a1a'],
+    accent: '#999',
+    img: '/images/ghost.png',
+    amazon: 'https://www.amazon.com/s?k=seiko+mod+ghost+daytona',
+  },
+];
+
+/* ---------------------------
+   GÉNÉRATION DES CARDS
+--------------------------- */
+function buildCard(w) {
+  const colorDots = w.colors.map(c =>
+    `<span class="color-dot" style="background:${c}"></span>`
+  ).join('');
+
+  const badge = w.badge
+    ? `<div class="product-badge${w.badgeNew ? ' new' : ''}">${w.badge}</div>`
+    : '';
+
+  return `
+    <article class="product-card" data-category="${w.categories}">
+      <div class="product-image card-trigger"
+           style="--accent:${w.accent}"
+           data-id="${w.id}">
+        <img
+          src="${w.img}"
+          alt="${w.name}"
+          class="card-real-img"
+          loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        />
+        <div class="card-fallback-watch" style="display:none">
+          <div class="watch-preview">
+            <div class="watch-bezel" style="background:${w.accent}"></div>
+            <div class="watch-dial"></div>
+            <span class="watch-label">${w.type.split(' ')[0].toUpperCase()}</span>
+          </div>
+        </div>
+        ${badge}
+        <div class="card-hover-hint">
+          <span>Découvrir</span>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-meta">
+          <span class="product-type">${w.type}</span>
+          <div class="product-colors">${colorDots}</div>
+        </div>
+        <h3 class="product-name">${w.name}</h3>
+        <p class="product-desc">${w.desc}</p>
+        <div class="product-separator"></div>
+        <div class="product-footer">
+          <a href="${w.amazon}" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+            Voir sur Amazon →
+          </a>
+        </div>
+      </div>
+    </article>`;
+}
+
+const grid = document.getElementById('productsGrid');
+grid.innerHTML = watches.map(buildCard).join('');
+
+/* ---------------------------
+   FILTRES
+--------------------------- */
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.classList.toggle('hidden', f !== 'all' && !card.dataset.category.includes(f));
+    });
+  });
+});
+
+/* ---------------------------
+   HEADER SCROLL
+--------------------------- */
 const header = document.getElementById('header');
 window.addEventListener('scroll', () => {
   header.classList.toggle('scrolled', window.scrollY > 40);
-});
+}, { passive: true });
 
-// Mobile menu
+/* ---------------------------
+   MENU MOBILE
+--------------------------- */
 const menuToggle = document.getElementById('menuToggle');
 const nav = document.getElementById('nav');
-menuToggle.addEventListener('click', () => {
-  nav.classList.toggle('open');
-});
-nav.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => nav.classList.remove('open'));
-});
+menuToggle.addEventListener('click', () => nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
 
-// Analog clock
+/* ---------------------------
+   HORLOGE ANALOGIQUE
+--------------------------- */
 function updateClock() {
   const now = new Date();
   const s = now.getSeconds() + now.getMilliseconds() / 1000;
   const m = now.getMinutes() + s / 60;
   const h = (now.getHours() % 12) + m / 60;
-
-  const secondHand = document.getElementById('secondHand');
-  const minuteHand = document.getElementById('minuteHand');
-  const hourHand = document.getElementById('hourHand');
-
-  if (secondHand) secondHand.style.transform = `rotate(${s * 6}deg)`;
-  if (minuteHand) minuteHand.style.transform = `rotate(${m * 6}deg)`;
-  if (hourHand)   hourHand.style.transform   = `rotate(${h * 30}deg)`;
+  const sh = document.getElementById('secondHand');
+  const mh = document.getElementById('minuteHand');
+  const hh = document.getElementById('hourHand');
+  if (sh) sh.style.transform = `rotate(${s * 6}deg)`;
+  if (mh) mh.style.transform = `rotate(${m * 6}deg)`;
+  if (hh) hh.style.transform = `rotate(${h * 30}deg)`;
 }
 setInterval(updateClock, 50);
 updateClock();
 
-// Product filter
-const filterBtns = document.querySelectorAll('.filter-btn');
-const cards = document.querySelectorAll('.product-card');
-
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-
-    const filter = btn.dataset.filter;
-    cards.forEach(card => {
-      if (filter === 'all') {
-        card.classList.remove('hidden');
-      } else {
-        const cats = card.dataset.category || '';
-        card.classList.toggle('hidden', !cats.includes(filter));
-      }
-    });
-  });
-});
-
-// Amazon redirect buttons (placeholder — will be replaced with real ASINs)
-const amazonLinks = {
-  batman:    'https://www.amazon.com/s?k=seiko+mod+batman',
-  panda:     'https://www.amazon.com/s?k=seiko+mod+panda+daytona',
-  hulk:      'https://www.amazon.com/s?k=seiko+mod+hulk+submariner',
-  pepsi:     'https://www.amazon.com/s?k=seiko+mod+pepsi+gmt',
-  wimbledon: 'https://www.amazon.com/s?k=seiko+mod+wimbledon+datejust',
-  starbucks: 'https://www.amazon.com/s?k=seiko+mod+starbucks+submariner',
-  cocacola:  'https://www.amazon.com/s?k=seiko+mod+coca+cola+gmt',
-  sprite:    'https://www.amazon.com/s?k=seiko+mod+sprite+gmt',
-  joker:     'https://www.amazon.com/s?k=seiko+mod+joker+gmt',
-  batgirl:   'https://www.amazon.com/s?k=seiko+mod+batgirl+gmt',
-  rootbeer:  'https://www.amazon.com/s?k=seiko+mod+root+beer+gmt',
-  ghost:     'https://www.amazon.com/s?k=seiko+mod+ghost+daytona',
-};
-
-document.querySelectorAll('[data-watch]').forEach(btn => {
-  btn.addEventListener('click', e => {
-    e.preventDefault();
-    const watch = btn.dataset.watch;
-    const url = amazonLinks[watch];
-    if (url) window.open(url, '_blank', 'noopener,noreferrer');
-  });
-});
-
-// Scroll reveal
-const observer = new IntersectionObserver(
-  entries => entries.forEach(e => {
+/* ---------------------------
+   SCROLL REVEAL
+--------------------------- */
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
     if (e.isIntersecting) {
-      e.target.style.opacity = '1';
-      e.target.style.transform = 'translateY(0)';
+      setTimeout(() => {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }, e.target.dataset.delay || 0);
+      revealObserver.unobserve(e.target);
     }
-  }),
-  { threshold: 0.1 }
-);
+  });
+}, { threshold: 0.08 });
 
-document.querySelectorAll('.product-card, .stat, .section-header').forEach(el => {
+document.querySelectorAll('.product-card').forEach((el, i) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(28px)';
+  el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+  el.dataset.delay = (i % 3) * 80;
+  revealObserver.observe(el);
+});
+document.querySelectorAll('.stat, .section-header').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(20px)';
   el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-  observer.observe(el);
+  el.dataset.delay = 0;
+  revealObserver.observe(el);
+});
+
+/* ---------------------------
+   MODAL WOW
+--------------------------- */
+const modal       = document.getElementById('watchModal');
+const modalBgBlur = document.getElementById('modalBgBlur');
+const modalSpot   = document.getElementById('modalSpotlight');
+const modalImg    = document.getElementById('modalImg');
+const modalImgWrap= document.getElementById('modalImgWrap');
+const modalType   = document.getElementById('modalType');
+const modalName   = document.getElementById('modalName');
+const modalDesc   = document.getElementById('modalDesc');
+const modalColors = document.getElementById('modalColors');
+const modalBtn    = document.getElementById('modalBtn');
+const modalClose  = document.getElementById('modalClose');
+
+function openModal(watchId, originRect) {
+  const w = watches.find(x => x.id === watchId);
+  if (!w) return;
+
+  // Calcule l'origine du cercle (centre de la card cliquée)
+  const ox = ((originRect.left + originRect.width / 2) / window.innerWidth * 100).toFixed(1);
+  const oy = ((originRect.top  + originRect.height / 2) / window.innerHeight * 100).toFixed(1);
+  modal.style.setProperty('--ox', ox + '%');
+  modal.style.setProperty('--oy', oy + '%');
+
+  // Fond flouté
+  modalBgBlur.style.backgroundImage = `url(${w.img})`;
+
+  // Image principale
+  modalImg.src = w.img;
+  modalImg.alt = w.name;
+  modalImg.style.display = 'block';
+
+  // Infos
+  modalType.textContent = w.type;
+  modalName.textContent = w.name;
+  modalDesc.textContent = w.desc;
+  modalColors.innerHTML = w.colors.map(c =>
+    `<span class="color-dot" style="background:${c}"></span>`
+  ).join('');
+  modalBtn.href = w.amazon;
+
+  // Ouvre
+  document.body.style.overflow = 'hidden';
+  modal.setAttribute('aria-hidden', 'false');
+  modal.classList.add('is-open');
+}
+
+function closeModal() {
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  // Nettoie après la transition
+  setTimeout(() => {
+    modalImg.src = '';
+    modalBgBlur.style.backgroundImage = '';
+  }, 500);
+}
+
+// Ouvre en cliquant sur l'image de la card
+document.getElementById('productsGrid').addEventListener('click', e => {
+  const trigger = e.target.closest('.card-trigger');
+  if (!trigger) return;
+  openModal(trigger.dataset.id, trigger.getBoundingClientRect());
+});
+
+// Ferme
+modalClose.addEventListener('click', closeModal);
+document.getElementById('modalBackdrop').addEventListener('click', closeModal);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
 });
