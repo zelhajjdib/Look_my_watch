@@ -567,20 +567,10 @@ a { color: inherit; text-decoration: none; }
 
 /* Image produit */
 .product-image {
-  aspect-ratio: 4/3;
-  background: var(--black3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  aspect-ratio: 1/1;
+  background: var(--black);
   position: relative;
   overflow: hidden;
-}
-.product-image::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 40%, var(--accent, #333) 0%, transparent 65%);
-  opacity: 0.22;
 }
 
 /* Watch preview */
@@ -987,342 +977,190 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ===========================
-   MODAL WOW
+   CARD image
 =========================== */
-.watch-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 3000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.watch-modal.is-open {
-  visibility: visible;
-  pointer-events: all;
-}
-
-/* Fond assombri */
-.modal-backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0);
-  transition: background 0.5s ease;
-}
-.watch-modal.is-open .modal-backdrop {
-  background: rgba(0,0,0,0.92);
-}
-
-/* Image floutée en fond */
-.modal-bg-blur {
-  position: absolute;
-  inset: -5%;
-  background-size: cover;
-  background-position: center;
-  filter: blur(40px) brightness(0.25) saturate(1.6);
-  transform: scale(1.08);
-  opacity: 0;
-  transition: opacity 0.7s ease 0.1s;
-}
-.watch-modal.is-open .modal-bg-blur {
-  opacity: 1;
-}
-
-/* Cercle lumineux qui s'étend depuis la card */
-.modal-spotlight {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at var(--ox, 50%) var(--oy, 50%), rgba(255,255,255,0.03) 0%, transparent 60%);
-  clip-path: circle(0% at var(--ox, 50%) var(--oy, 50%));
-  transition: clip-path 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: none;
-}
-.watch-modal.is-open .modal-spotlight {
-  clip-path: circle(160% at var(--ox, 50%) var(--oy, 50%));
-}
-
-/* Contenu principal */
-.modal-body {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 4rem;
-  align-items: center;
-  width: 100%;
-  max-width: 1100px;
-  padding: 2rem 3rem;
-  pointer-events: none;
-}
-.watch-modal.is-open .modal-body {
-  pointer-events: all;
-}
-
-/* Close button */
-.modal-close {
-  position: fixed;
-  top: 1.5rem;
-  right: 1.75rem;
-  width: 44px;
-  height: 44px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  transition: all 0.25s ease;
-  opacity: 0;
-  transform: scale(0.7) rotate(-45deg);
-  transition: opacity 0.4s ease 0.4s, transform 0.4s ease 0.4s, background 0.2s;
-}
-.watch-modal.is-open .modal-close {
-  opacity: 1;
-  transform: scale(1) rotate(0deg);
-}
-.modal-close:hover {
-  background: rgba(255,255,255,0.12);
-  border-color: var(--gold);
-}
-.modal-close span {
-  position: absolute;
-  width: 16px;
-  height: 1.5px;
-  background: var(--white);
-  transition: background 0.2s;
-}
-.modal-close span:first-child { transform: rotate(45deg); }
-.modal-close span:last-child  { transform: rotate(-45deg); }
-.modal-close:hover span { background: var(--gold-bright); }
-
-/* Zone image */
-.modal-stage {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal-img-wrap {
-  position: relative;
-  width: min(520px, 50vw);
-  aspect-ratio: 3/4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  /* Zoom depuis la card : part de scale 0.15 */
-  opacity: 0;
-  transform: scale(0.12) translateY(40px);
-  transition:
-    opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1) 0.15s,
-    transform 0.65s cubic-bezier(0.34, 1.42, 0.64, 1) 0.1s;
-  filter: drop-shadow(0 40px 80px rgba(0,0,0,0.9)) drop-shadow(0 0 40px rgba(201,168,76,0.15));
-}
-.watch-modal.is-open .modal-img-wrap {
-  opacity: 1;
-  transform: scale(1) translateY(0);
-}
-
-.modal-img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 2px;
-  display: block;
-}
-
-/* Fallback CSS watch dans le modal */
-.modal-css-watch {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.modal-css-watch:empty { display: none; }
-
-/* Panneau infos */
-.modal-info-panel {
-  opacity: 0;
-  transform: translateX(30px);
-  transition:
-    opacity 0.5s ease 0.35s,
-    transform 0.55s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
-}
-.watch-modal.is-open .modal-info-panel {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.modal-eyebrow {
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 0.85rem;
-  background: var(--gold-grad);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.4s ease 0.45s, transform 0.4s ease 0.45s;
-}
-.watch-modal.is-open .modal-eyebrow {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.modal-name {
-  font-family: var(--font-serif);
-  font-size: clamp(2.75rem, 5vw, 4.5rem);
-  font-weight: 900;
-  letter-spacing: 0.12em;
-  color: var(--white);
-  line-height: 1;
-  margin-bottom: 1.5rem;
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.45s ease 0.5s, transform 0.45s ease 0.5s;
-}
-.watch-modal.is-open .modal-name {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Ligne or sous le nom */
-.modal-name::after {
-  content: '';
-  display: block;
-  width: 48px;
-  height: 2px;
-  background: var(--gold-grad);
-  margin-top: 1rem;
-}
-
-.modal-desc {
-  font-size: 0.9rem;
-  color: var(--gray-light);
-  line-height: 1.8;
-  margin-bottom: 1.75rem;
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.4s ease 0.57s, transform 0.4s ease 0.57s;
-}
-.watch-modal.is-open .modal-desc {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.modal-colors {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 2rem;
-  opacity: 0;
-  transition: opacity 0.4s ease 0.62s;
-}
-.watch-modal.is-open .modal-colors { opacity: 1; }
-
-.modal-colors .color-dot {
-  width: 16px;
-  height: 16px;
-}
-
-.modal-info-panel .btn {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.4s ease 0.67s, transform 0.4s ease 0.67s, background 0.25s, box-shadow 0.25s;
-}
-.watch-modal.is-open .modal-info-panel .btn {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Responsive modal */
-@media (max-width: 768px) {
-  .modal-body {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    padding: 5rem 1.5rem 2rem;
-    gap: 2rem;
-    overflow-y: auto;
-    max-height: 100vh;
-  }
-  .modal-img-wrap {
-    width: min(320px, 85vw);
-    aspect-ratio: 3/4;
-  }
-  .modal-info-panel { text-align: center; }
-  .modal-name::after { margin: 1rem auto 0; }
-  .modal-colors { justify-content: center; }
-}
-
-/* ---------------------------
-   CARD — image réelle
---------------------------- */
-.product-image {
-  cursor: pointer;
-  position: relative;
-}
-
 .card-real-img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 1;
+  object-fit: contain;
+  object-position: center center;
+  transition: transform 0.45s ease;
 }
-
 .product-card:hover .card-real-img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
-
 .card-fallback-watch {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
 }
 
-/* Hint "Découvrir" au hover */
-.card-hover-hint {
-  position: absolute;
+/* ===========================
+   MODAL SIMPLE
+=========================== */
+.watch-modal {
+  position: fixed;
   inset: 0;
-  z-index: 3;
+  z-index: 3000;
+  background: rgba(0,0,0,0.88);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0,0,0,0);
-  transition: background 0.35s ease;
-  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+  backdrop-filter: blur(6px);
 }
-.product-card:hover .card-hover-hint {
-  background: rgba(0,0,0,0.38);
+.watch-modal.is-open {
+  opacity: 1;
+  visibility: visible;
 }
 
+.modal-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 3.5rem;
+  align-items: center;
+  max-width: 980px;
+  width: 100%;
+  padding: 2rem 3rem;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
+}
+.watch-modal.is-open .modal-inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modal-close {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.5rem;
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+}
+.modal-close:hover { background: rgba(255,255,255,0.14); border-color: var(--gold); }
+.modal-close span {
+  position: absolute;
+  width: 14px;
+  height: 1.5px;
+  background: var(--white);
+}
+.modal-close span:first-child { transform: rotate(45deg); }
+.modal-close span:last-child  { transform: rotate(-45deg); }
+
+.modal-img-wrap {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background: var(--black);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.7);
+}
+.modal-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  display: block;
+}
+
+.modal-info-panel { color: var(--white); }
+
+.modal-eyebrow {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.75rem;
+  background: var(--gold-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.modal-name {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 4vw, 3.75rem);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+.modal-name::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1.5px;
+  background: var(--gold-grad);
+  margin-top: 0.85rem;
+}
+.modal-desc {
+  font-size: 0.88rem;
+  color: var(--gray-light);
+  line-height: 1.75;
+  margin-top: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.modal-colors {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 2rem;
+}
+.modal-colors .color-dot { width: 14px; height: 14px; }
+
+@media (max-width: 768px) {
+  .modal-inner {
+    grid-template-columns: 1fr;
+    padding: 5rem 1.5rem 2rem;
+    gap: 1.75rem;
+    overflow-y: auto;
+    max-height: 100dvh;
+  }
+  .modal-info-panel { text-align: center; }
+  .modal-name::after { margin: 0.85rem auto 0; }
+  .modal-colors { justify-content: center; }
+}
+
+/* Hint hover simple */
+.card-hover-hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 1.25rem;
+  pointer-events: none;
+}
 .card-hover-hint span {
-  font-size: 0.68rem;
+  font-size: 0.6rem;
   font-weight: 600;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--white);
-  border: 1px solid rgba(255,255,255,0.5);
-  padding: 0.5rem 1.25rem;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 0.4rem 1rem;
   opacity: 0;
-  transform: translateY(8px) scale(0.95);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(5px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  backdrop-filter: blur(4px);
 }
 .product-card:hover .card-hover-hint span {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
 }

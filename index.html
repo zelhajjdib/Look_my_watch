@@ -182,33 +182,19 @@
     </div>
   </footer>
 
-  <!-- MODAL WOW -->
+  <!-- MODAL -->
   <div id="watchModal" class="watch-modal" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal-backdrop" id="modalBackdrop"></div>
-    <div class="modal-bg-blur" id="modalBgBlur"></div>
-    <div class="modal-spotlight" id="modalSpotlight"></div>
-
-    <div class="modal-body">
-      <button class="modal-close" id="modalClose" aria-label="Fermer">
-        <span></span><span></span>
-      </button>
-
-      <div class="modal-stage">
-        <div class="modal-img-wrap" id="modalImgWrap">
-          <img id="modalImg" src="" alt="" draggable="false" />
-          <!-- Fallback CSS watch quand pas d'image -->
-          <div class="modal-css-watch" id="modalCssWatch"></div>
-        </div>
+    <div class="modal-inner">
+      <button class="modal-close" id="modalClose" aria-label="Fermer"><span></span><span></span></button>
+      <div class="modal-img-wrap">
+        <img id="modalImg" src="" alt="" draggable="false" />
       </div>
-
       <div class="modal-info-panel" id="modalInfoPanel">
         <span class="modal-eyebrow" id="modalType"></span>
         <h2 class="modal-name" id="modalName"></h2>
         <p class="modal-desc" id="modalDesc"></p>
         <div class="modal-colors" id="modalColors"></div>
-        <a id="modalBtn" href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-          Voir sur Amazon →
-        </a>
+        <a id="modalBtn" href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Voir sur Amazon →</a>
       </div>
     </div>
   </div>

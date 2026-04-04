@@ -281,39 +281,22 @@ document.querySelectorAll('.stat, .section-header').forEach(el => {
 });
 
 /* ---------------------------
-   MODAL WOW
+   MODAL
 --------------------------- */
-const modal       = document.getElementById('watchModal');
-const modalBgBlur = document.getElementById('modalBgBlur');
-const modalSpot   = document.getElementById('modalSpotlight');
-const modalImg    = document.getElementById('modalImg');
-const modalImgWrap= document.getElementById('modalImgWrap');
-const modalType   = document.getElementById('modalType');
-const modalName   = document.getElementById('modalName');
-const modalDesc   = document.getElementById('modalDesc');
-const modalColors = document.getElementById('modalColors');
-const modalBtn    = document.getElementById('modalBtn');
-const modalClose  = document.getElementById('modalClose');
+const modal      = document.getElementById('watchModal');
+const modalImg   = document.getElementById('modalImg');
+const modalType  = document.getElementById('modalType');
+const modalName  = document.getElementById('modalName');
+const modalDesc  = document.getElementById('modalDesc');
+const modalColors= document.getElementById('modalColors');
+const modalBtn   = document.getElementById('modalBtn');
+const modalClose = document.getElementById('modalClose');
 
-function openModal(watchId, originRect) {
+function openModal(watchId) {
   const w = watches.find(x => x.id === watchId);
   if (!w) return;
-
-  // Calcule l'origine du cercle (centre de la card cliquée)
-  const ox = ((originRect.left + originRect.width / 2) / window.innerWidth * 100).toFixed(1);
-  const oy = ((originRect.top  + originRect.height / 2) / window.innerHeight * 100).toFixed(1);
-  modal.style.setProperty('--ox', ox + '%');
-  modal.style.setProperty('--oy', oy + '%');
-
-  // Fond flouté
-  modalBgBlur.style.backgroundImage = `url(${w.img})`;
-
-  // Image principale
-  modalImg.src = w.img;
-  modalImg.alt = w.name;
-  modalImg.style.display = 'block';
-
-  // Infos
+  modalImg.src    = w.img;
+  modalImg.alt    = w.name;
   modalType.textContent = w.type;
   modalName.textContent = w.name;
   modalDesc.textContent = w.desc;
@@ -321,8 +304,6 @@ function openModal(watchId, originRect) {
     `<span class="color-dot" style="background:${c}"></span>`
   ).join('');
   modalBtn.href = w.amazon;
-
-  // Ouvre
   document.body.style.overflow = 'hidden';
   modal.setAttribute('aria-hidden', 'false');
   modal.classList.add('is-open');
@@ -332,23 +313,16 @@ function closeModal() {
   modal.classList.remove('is-open');
   modal.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
-  // Nettoie après la transition
-  setTimeout(() => {
-    modalImg.src = '';
-    modalBgBlur.style.backgroundImage = '';
-  }, 500);
 }
 
-// Ouvre en cliquant sur l'image de la card
 document.getElementById('productsGrid').addEventListener('click', e => {
   const trigger = e.target.closest('.card-trigger');
   if (!trigger) return;
-  openModal(trigger.dataset.id, trigger.getBoundingClientRect());
+  openModal(trigger.dataset.id);
 });
 
-// Ferme
 modalClose.addEventListener('click', closeModal);
-document.getElementById('modalBackdrop').addEventListener('click', closeModal);
+modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+  if (e.key === 'Escape') closeModal();
 });
