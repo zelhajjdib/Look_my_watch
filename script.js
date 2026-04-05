@@ -191,7 +191,7 @@ function buildCard(w) {
         <p class="product-desc">${w.desc}</p>
         <div class="product-separator"></div>
         <div class="product-footer">
-          <a href="${w.amazon}" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+          <a href="${w.amazon}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
             Voir sur Amazon →
           </a>
         </div>
