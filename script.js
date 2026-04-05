@@ -5,7 +5,7 @@
 /* ---------------------------
    DONNÉES PRODUITS
    → Ajoute tes liens Amazon dans `amazon`
-   → Ajoute tes images dans `img` (ex: '/images/batman.jpg')
+   → Ajoute tes images dans `img` (ex: `${import.meta.env.BASE_URL}images/batman.jpg')
 --------------------------- */
 const watches = [
   {
@@ -17,7 +17,7 @@ const watches = [
     desc: 'Cadran noir, lunette bi-couleur noir/bleu. L\'élégance sombre de Gotham au poignet.',
     colors: ['#0d0d0d', '#1a3a6b'],
     accent: '#1a3a6b',
-    img: '/images/batman.png',
+    img: `${import.meta.env.BASE_URL}images/batman.png`,
     amazon: 'https://www.amazon.com/s?k=seiko+mod+batman',
   },
   {
@@ -30,7 +30,7 @@ const watches = [
     desc: 'Cadran blanc, sous-compteurs noirs. Le chronographe iconique dans sa version la plus pure.',
     colors: ['#f0f0f0', '#1a1a1a'],
     accent: '#e0e0e0',
-    img: '/images/panda.png',
+    img: `${import.meta.env.BASE_URL}images/panda.png`,
     amazon: 'https://www.amazon.com/s?k=seiko+mod+panda+daytona',
   },
   {
@@ -42,7 +42,7 @@ const watches = [
     desc: 'Full green — lunette et cadran vert intense. La puissance à l\'état pur.',
     colors: ['#1a6b2a', '#155224'],
     accent: '#1a6b2a',
-    img: '/images/hulk.png',
+    img: `${import.meta.env.BASE_URL}images/hulk.png`,
     amazon: 'https://www.amazon.com/s?k=seiko+mod+hulk+submariner',
   },
   {
@@ -53,7 +53,7 @@ const watches = [
     desc: 'Lunette rouge/bleu iconique sur bracelet Jubilee. La référence absolue du GMT.',
     colors: ['#002fa7', '#c41e3a'],
     accent: '#c41e3a',
-    img: '/images/pepsi.png',
+    img: `${import.meta.env.BASE_URL}images/pepsi.png`,
     amazon: 'https://www.amazon.com/s?k=seiko+mod+pepsi+gmt',
   },
   {
@@ -64,7 +64,7 @@ const watches = [
     desc: 'Cadran ardoise sombre, chiffres romains verts. L\'élégance des courts du Grand Chelem.',
     colors: ['#2a2a2a', '#4caf50'],
     accent: '#4caf50',
-    img: '/images/wimbledon.png',
+    img: `${import.meta.env.BASE_URL}images/wimbledon.png`,
     amazon: 'https://www.amazon.com/s?k=seiko+mod+wimbledon+datejust',
   },
   {
@@ -75,7 +75,7 @@ const watches = [
     desc: 'Lunette verte, cadran noir profond. La discrétion du plongeur avec l\'âme du café.',
     colors: ['#1a6b2a', '#0d0d0d'],
     accent: '#1a6b2a',
-    img: '/images/starbucks.png',
+    img: `${import.meta.env.BASE_URL}images/starbucks.png`,
     amazon: 'https://www.amazon.com/s?k=seiko+mod+starbucks+submariner',
   },
   {
@@ -86,7 +86,7 @@ const watches = [
     desc: 'Lunette noir/rouge, cadran sombre. L\'énergie rouge intemporelle au poignet.',
     colors: ['#0d0d0d', '#cc0000'],
     accent: '#cc0000',
-    img: '/images/coca.png',
+    img: `${import.meta.env.BASE_URL}images/coca.png`,
     amazon: 'https://www.amazon.com/s?k=seiko+mod+coca+cola+gmt',
   },
   {
@@ -97,7 +97,7 @@ const watches = [
     desc: 'Lunette noir/vert sur bracelet Jubilee. La fraîcheur cristalline en acier inoxydable.',
     colors: ['#0d0d0d', '#1a6b2a'],
     accent: '#1a6b2a',
-    img: '/images/sprite.png',
+    img: `${import.meta.env.BASE_URL}images/sprite.png`,
     amazon: 'https://www.amazon.com/s?k=seiko+mod+sprite+gmt',
   },
   {
@@ -108,7 +108,7 @@ const watches = [
     desc: 'Lunette noir/violet. Le chaos élégant du Prince du Crime au poignet.',
     colors: ['#0d0d0d', '#6a0dad'],
     accent: '#6a0dad',
-    img: '/images/joker.png',
+    img: `${import.meta.env.BASE_URL}images/joker.png`,
     amazon: 'https://www.amazon.com/s?k=seiko+mod+joker+gmt',
   },
   {
@@ -119,7 +119,7 @@ const watches = [
     desc: 'Lunette noir/bleu sur Jubilee. La justice nocturne, en version féminine et acérée.',
     colors: ['#0d0d0d', '#1a3a6b'],
     accent: '#1a3a6b',
-    img: '/images/batwoman.png',
+    img: `${import.meta.env.BASE_URL}images/batwoman.png`,
     amazon: 'https://www.amazon.com/s?k=seiko+mod+batgirl+gmt',
   },
   {
@@ -130,7 +130,7 @@ const watches = [
     desc: 'Bicolore or/acier, lunette noir/brun. La pièce la plus luxueuse de la collection.',
     colors: ['#c9a84c', '#8b4513', '#0d0d0d'],
     accent: '#c9a84c',
-    img: '/images/h.png',
+    img: `${import.meta.env.BASE_URL}images/h.png`,
     amazon: 'https://www.amazon.com/s?k=seiko+mod+root+beer+gmt',
   },
   {
@@ -141,7 +141,7 @@ const watches = [
     desc: 'Cadran gris argenté, sous-compteurs noirs. L\'invisible qui marque les esprits.',
     colors: ['#b0b0b0', '#1a1a1a'],
     accent: '#999',
-    img: '/images/ghost.png',
+    img: `${import.meta.env.BASE_URL}images/ghost.png`,
     amazon: 'https://www.amazon.com/s?k=seiko+mod+ghost+daytona',
   },
 ];
