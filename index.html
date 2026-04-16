@@ -23,6 +23,10 @@
         <a href="#about">À propos</a>
         <a href="#contact">Contact</a>
       </nav>
+      <button class="btn-auth" id="authBtn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M3 21c0-4.418 4.03-8 9-8s9 3.582 9 8"/></svg>
+        <span id="authBtnText">Se connecter</span>
+      </button>
       <button class="menu-toggle" id="menuToggle" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -254,6 +258,84 @@
     </div>
   </div>
 
+  <!-- AUTH MODAL -->
+  <div id="authModal" class="auth-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="auth-modal-inner">
+      <button class="modal-close" id="authModalClose" aria-label="Fermer"><span></span><span></span></button>
+
+      <!-- LOGIN -->
+      <div class="auth-panel" id="loginPanel">
+        <div class="auth-header">
+          <p class="section-eyebrow" style="display:block;text-align:left">Accès membre</p>
+          <h2 class="auth-title">Se <span class="gold">connecter</span></h2>
+        </div>
+        <form class="auth-form" id="loginForm" novalidate>
+          <div class="form-group">
+            <label for="loginEmail">Email</label>
+            <input type="email" id="loginEmail" name="loginEmail" placeholder="votre@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Mot de passe</label>
+            <input type="password" id="loginPassword" name="loginPassword" placeholder="••••••••" required />
+          </div>
+          <p class="auth-error" id="loginError"></p>
+          <button type="submit" class="btn btn-primary auth-submit">Se connecter →</button>
+        </form>
+        <p class="auth-switch">Pas encore de compte ? <button class="auth-switch-btn" id="toRegister">S'inscrire</button></p>
+      </div>
+
+      <!-- REGISTER -->
+      <div class="auth-panel hidden" id="registerPanel">
+        <div class="auth-header">
+          <p class="section-eyebrow" style="display:block;text-align:left">Nouveau membre</p>
+          <h2 class="auth-title">Créer mon <span class="gold">compte</span></h2>
+        </div>
+        <form class="auth-form" id="registerForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="regNom">Nom</label>
+              <input type="text" id="regNom" name="regNom" placeholder="Dupont" required />
+            </div>
+            <div class="form-group">
+              <label for="regPrenom">Prénom</label>
+              <input type="text" id="regPrenom" name="regPrenom" placeholder="Jean" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="regEmail">Email</label>
+            <input type="email" id="regEmail" name="regEmail" placeholder="votre@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="regPhone">Numéro de téléphone</label>
+            <input type="tel" id="regPhone" name="regPhone" placeholder="+33 6 12 34 56 78" required />
+          </div>
+          <div class="form-group">
+            <label for="regBirthday">Date de naissance</label>
+            <input type="date" id="regBirthday" name="regBirthday" required />
+          </div>
+          <div class="form-group">
+            <label for="regPassword">Mot de passe <span style="color:var(--gray);font-size:0.75em">(6 caractères min)</span></label>
+            <input type="password" id="regPassword" name="regPassword" placeholder="••••••••" minlength="6" required />
+          </div>
+          <p class="auth-error" id="registerError"></p>
+          <button type="submit" class="btn btn-primary auth-submit">Créer mon compte →</button>
+        </form>
+        <p class="auth-switch">Déjà un compte ? <button class="auth-switch-btn" id="toLogin">Se connecter</button></p>
+      </div>
+
+      <!-- USER LOGGED IN -->
+      <div class="auth-panel hidden" id="userPanel">
+        <div class="auth-header">
+          <p class="section-eyebrow" style="display:block;text-align:left">Mon compte</p>
+          <h2 class="auth-title">Bonjour, <span class="gold" id="userFirstName"></span></h2>
+        </div>
+        <p class="user-email" id="userEmail"></p>
+        <button class="btn btn-secondary auth-submit" id="logoutBtn">Se déconnecter</button>
+      </div>
+    </div>
+  </div>
+
   <script type="module" src="script.js"></script>
+  <script type="module" src="auth.js"></script>
 </body>
 </html>
