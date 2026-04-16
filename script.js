@@ -18,7 +18,6 @@ const watches = [
     colors: ['#0d0d0d', '#1a3a6b'],
     accent: '#1a3a6b',
     img: `${import.meta.env.BASE_URL}images/batman.png`,
-    amazon: 'https://www.amazon.com/s?k=seiko+mod+batman',
     price: 189,
     stock: 4,
   },
@@ -33,7 +32,6 @@ const watches = [
     colors: ['#f0f0f0', '#1a1a1a'],
     accent: '#e0e0e0',
     img: `${import.meta.env.BASE_URL}images/panda.png`,
-    amazon: 'https://www.amazon.com/s?k=seiko+mod+panda+daytona',
     price: 219,
     stock: 7,
   },
@@ -47,7 +45,6 @@ const watches = [
     colors: ['#1a6b2a', '#155224'],
     accent: '#1a6b2a',
     img: `${import.meta.env.BASE_URL}images/hulk.png`,
-    amazon: 'https://www.amazon.com/s?k=seiko+mod+hulk+submariner',
     price: 199,
     stock: 3,
   },
@@ -60,7 +57,6 @@ const watches = [
     colors: ['#002fa7', '#c41e3a'],
     accent: '#c41e3a',
     img: `${import.meta.env.BASE_URL}images/pepsi.png`,
-    amazon: 'https://www.amazon.com/s?k=seiko+mod+pepsi+gmt',
     price: 209,
     stock: 5,
   },
@@ -73,7 +69,6 @@ const watches = [
     colors: ['#2a2a2a', '#4caf50'],
     accent: '#4caf50',
     img: `${import.meta.env.BASE_URL}images/wimbledon.png`,
-    amazon: 'https://www.amazon.com/s?k=seiko+mod+wimbledon+datejust',
     price: 229,
     stock: 2,
   },
@@ -86,7 +81,6 @@ const watches = [
     colors: ['#1a6b2a', '#0d0d0d'],
     accent: '#1a6b2a',
     img: `${import.meta.env.BASE_URL}images/starbucks.png`,
-    amazon: 'https://www.amazon.com/s?k=seiko+mod+starbucks+submariner',
     price: 179,
     stock: 9,
   },
@@ -99,7 +93,6 @@ const watches = [
     colors: ['#0d0d0d', '#cc0000'],
     accent: '#cc0000',
     img: `${import.meta.env.BASE_URL}images/coca.png`,
-    amazon: 'https://www.amazon.com/s?k=seiko+mod+coca+cola+gmt',
     price: 189,
     stock: 6,
   },
@@ -112,7 +105,6 @@ const watches = [
     colors: ['#0d0d0d', '#1a6b2a'],
     accent: '#1a6b2a',
     img: `${import.meta.env.BASE_URL}images/sprite.png`,
-    amazon: 'https://www.amazon.com/s?k=seiko+mod+sprite+gmt',
     price: 189,
     stock: 0,
   },
@@ -125,7 +117,6 @@ const watches = [
     colors: ['#0d0d0d', '#6a0dad'],
     accent: '#6a0dad',
     img: `${import.meta.env.BASE_URL}images/joker.png`,
-    amazon: 'https://www.amazon.com/s?k=seiko+mod+joker+gmt',
     price: 199,
     stock: 1,
   },
@@ -138,7 +129,6 @@ const watches = [
     colors: ['#0d0d0d', '#1a3a6b'],
     accent: '#1a3a6b',
     img: `${import.meta.env.BASE_URL}images/batwoman.png`,
-    amazon: 'https://www.amazon.com/s?k=seiko+mod+batgirl+gmt',
     price: 209,
     stock: 5,
   },
@@ -151,7 +141,6 @@ const watches = [
     colors: ['#c9a84c', '#8b4513', '#0d0d0d'],
     accent: '#c9a84c',
     img: `${import.meta.env.BASE_URL}images/h.png`,
-    amazon: 'https://www.amazon.com/s?k=seiko+mod+root+beer+gmt',
     price: 259,
     stock: 2,
   },
@@ -164,7 +153,6 @@ const watches = [
     colors: ['#b0b0b0', '#1a1a1a'],
     accent: '#999',
     img: `${import.meta.env.BASE_URL}images/ghost.png`,
-    amazon: 'https://www.amazon.com/s?k=seiko+mod+ghost+daytona',
     price: 219,
     stock: 3,
   },
@@ -226,10 +214,10 @@ function buildCard(w) {
           <span class="product-price">${w.price} €</span>
           <div class="product-footer-right">
             ${stockLabel(w.stock)}
-            <a href="${w.amazon}" class="btn btn-primary${outOfStock ? ' btn-disabled' : ''}"
-               ${outOfStock ? 'tabindex="-1" aria-disabled="true"' : `target="_blank" rel="noopener noreferrer"`}>
+            <button class="btn btn-primary${outOfStock ? ' btn-disabled' : ''}"
+               ${outOfStock ? 'disabled aria-disabled="true"' : `data-id="${w.id}"`}>
               ${outOfStock ? 'Indisponible' : 'Acheter →'}
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -343,11 +331,11 @@ function openModal(watchId) {
   document.getElementById('modalPrice').textContent = `${w.price} €`;
   document.getElementById('modalStock').innerHTML = stockLabel(w.stock);
   if (w.stock === 0) {
-    modalBtn.removeAttribute('href');
+    modalBtn.setAttribute('disabled', '');
     modalBtn.classList.add('btn-disabled');
     modalBtn.textContent = 'Indisponible';
   } else {
-    modalBtn.href = w.amazon;
+    modalBtn.removeAttribute('disabled');
     modalBtn.classList.remove('btn-disabled');
     modalBtn.textContent = 'Acheter →';
   }
