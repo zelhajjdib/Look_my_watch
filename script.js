@@ -19,6 +19,8 @@ const watches = [
     accent: '#1a3a6b',
     img: `${import.meta.env.BASE_URL}images/batman.png`,
     amazon: 'https://www.amazon.com/s?k=seiko+mod+batman',
+    price: 189,
+    stock: 4,
   },
   {
     id: 'panda',
@@ -32,6 +34,8 @@ const watches = [
     accent: '#e0e0e0',
     img: `${import.meta.env.BASE_URL}images/panda.png`,
     amazon: 'https://www.amazon.com/s?k=seiko+mod+panda+daytona',
+    price: 219,
+    stock: 7,
   },
   {
     id: 'hulk',
@@ -44,6 +48,8 @@ const watches = [
     accent: '#1a6b2a',
     img: `${import.meta.env.BASE_URL}images/hulk.png`,
     amazon: 'https://www.amazon.com/s?k=seiko+mod+hulk+submariner',
+    price: 199,
+    stock: 3,
   },
   {
     id: 'pepsi',
@@ -55,6 +61,8 @@ const watches = [
     accent: '#c41e3a',
     img: `${import.meta.env.BASE_URL}images/pepsi.png`,
     amazon: 'https://www.amazon.com/s?k=seiko+mod+pepsi+gmt',
+    price: 209,
+    stock: 5,
   },
   {
     id: 'wimbledon',
@@ -66,6 +74,8 @@ const watches = [
     accent: '#4caf50',
     img: `${import.meta.env.BASE_URL}images/wimbledon.png`,
     amazon: 'https://www.amazon.com/s?k=seiko+mod+wimbledon+datejust',
+    price: 229,
+    stock: 2,
   },
   {
     id: 'starbucks',
@@ -77,6 +87,8 @@ const watches = [
     accent: '#1a6b2a',
     img: `${import.meta.env.BASE_URL}images/starbucks.png`,
     amazon: 'https://www.amazon.com/s?k=seiko+mod+starbucks+submariner',
+    price: 179,
+    stock: 9,
   },
   {
     id: 'cocacola',
@@ -88,6 +100,8 @@ const watches = [
     accent: '#cc0000',
     img: `${import.meta.env.BASE_URL}images/coca.png`,
     amazon: 'https://www.amazon.com/s?k=seiko+mod+coca+cola+gmt',
+    price: 189,
+    stock: 6,
   },
   {
     id: 'sprite',
@@ -99,6 +113,8 @@ const watches = [
     accent: '#1a6b2a',
     img: `${import.meta.env.BASE_URL}images/sprite.png`,
     amazon: 'https://www.amazon.com/s?k=seiko+mod+sprite+gmt',
+    price: 189,
+    stock: 0,
   },
   {
     id: 'joker',
@@ -110,6 +126,8 @@ const watches = [
     accent: '#6a0dad',
     img: `${import.meta.env.BASE_URL}images/joker.png`,
     amazon: 'https://www.amazon.com/s?k=seiko+mod+joker+gmt',
+    price: 199,
+    stock: 1,
   },
   {
     id: 'batgirl',
@@ -121,6 +139,8 @@ const watches = [
     accent: '#1a3a6b',
     img: `${import.meta.env.BASE_URL}images/batwoman.png`,
     amazon: 'https://www.amazon.com/s?k=seiko+mod+batgirl+gmt',
+    price: 209,
+    stock: 5,
   },
   {
     id: 'rootbeer',
@@ -132,6 +152,8 @@ const watches = [
     accent: '#c9a84c',
     img: `${import.meta.env.BASE_URL}images/h.png`,
     amazon: 'https://www.amazon.com/s?k=seiko+mod+root+beer+gmt',
+    price: 259,
+    stock: 2,
   },
   {
     id: 'ghost',
@@ -143,12 +165,20 @@ const watches = [
     accent: '#999',
     img: `${import.meta.env.BASE_URL}images/ghost.png`,
     amazon: 'https://www.amazon.com/s?k=seiko+mod+ghost+daytona',
+    price: 219,
+    stock: 3,
   },
 ];
 
 /* ---------------------------
    GÉNÉRATION DES CARDS
 --------------------------- */
+function stockLabel(stock) {
+  if (stock === 0) return `<span class="stock stock--out">Rupture de stock</span>`;
+  if (stock <= 3)  return `<span class="stock stock--low">Plus que ${stock} en stock</span>`;
+  return `<span class="stock stock--ok">${stock} en stock</span>`;
+}
+
 function buildCard(w) {
   const colorDots = w.colors.map(c =>
     `<span class="color-dot" style="background:${c}"></span>`
@@ -158,8 +188,10 @@ function buildCard(w) {
     ? `<div class="product-badge${w.badgeNew ? ' new' : ''}">${w.badge}</div>`
     : '';
 
+  const outOfStock = w.stock === 0;
+
   return `
-    <article class="product-card" data-category="${w.categories}">
+    <article class="product-card${outOfStock ? ' out-of-stock' : ''}" data-category="${w.categories}">
       <div class="product-image card-trigger"
            style="--accent:${w.accent}"
            data-id="${w.id}">
@@ -191,9 +223,14 @@ function buildCard(w) {
         <p class="product-desc">${w.desc}</p>
         <div class="product-separator"></div>
         <div class="product-footer">
-          <a href="${w.amazon}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-            Voir sur Amazon →
-          </a>
+          <span class="product-price">${w.price} €</span>
+          <div class="product-footer-right">
+            ${stockLabel(w.stock)}
+            <a href="${w.amazon}" class="btn btn-primary${outOfStock ? ' btn-disabled' : ''}"
+               ${outOfStock ? 'tabindex="-1" aria-disabled="true"' : `target="_blank" rel="noopener noreferrer"`}>
+              ${outOfStock ? 'Indisponible' : 'Acheter →'}
+            </a>
+          </div>
         </div>
       </div>
     </article>`;
@@ -303,7 +340,17 @@ function openModal(watchId) {
   modalColors.innerHTML = w.colors.map(c =>
     `<span class="color-dot" style="background:${c}"></span>`
   ).join('');
-  modalBtn.href = w.amazon;
+  document.getElementById('modalPrice').textContent = `${w.price} €`;
+  document.getElementById('modalStock').innerHTML = stockLabel(w.stock);
+  if (w.stock === 0) {
+    modalBtn.removeAttribute('href');
+    modalBtn.classList.add('btn-disabled');
+    modalBtn.textContent = 'Indisponible';
+  } else {
+    modalBtn.href = w.amazon;
+    modalBtn.classList.remove('btn-disabled');
+    modalBtn.textContent = 'Acheter →';
+  }
   document.body.style.overflow = 'hidden';
   modal.setAttribute('aria-hidden', 'false');
   modal.classList.add('is-open');

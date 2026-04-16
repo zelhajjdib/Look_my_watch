@@ -1403,3 +1403,68 @@ input[type="date"] {
   .btn-auth span { display: none; }
   .btn-auth { padding: 0.42rem 0.6rem; }
 }
+
+/* ===========================
+   PRIX & STOCK
+=========================== */
+.product-footer {
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.product-price {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  background: var(--gold-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.product-footer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.45rem;
+}
+
+.stock {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+}
+.stock--ok  { color: #4caf50; background: rgba(76,175,80,0.1); }
+.stock--low { color: #ff9800; background: rgba(255,152,0,0.1); }
+.stock--out { color: var(--gray); background: rgba(255,255,255,0.05); }
+
+.btn-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.out-of-stock .card-real-img { filter: grayscale(60%); opacity: 0.7; }
+
+/* Modal purchase row */
+.modal-purchase {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.25rem 0 1.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--black3);
+  border: 1px solid var(--border-dark);
+}
+.modal-price {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  background: var(--gold-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
