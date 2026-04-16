@@ -148,8 +148,63 @@
     </div>
   </section>
 
+  <!-- CONTACT FORM -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Nous écrire</p>
+        <h2 class="section-title" style="color:var(--white)">Contactez-<span class="gold">nous</span></h2>
+        <div class="gold-sep"><div class="gold-sep-diamond"></div></div>
+        <p class="section-subtitle" style="margin-top:1.25rem;color:var(--gray-light)">Une question, une commande personnalisée ? On vous répond rapidement.</p>
+      </div>
+
+      <form
+        class="contact-form"
+        action="https://formsubmit.co/contact@lookmywatch.com"
+        method="POST"
+      >
+        <!-- Désactive le captcha formsubmit -->
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_subject" value="Nouveau message — Look My Watch" />
+        <input type="hidden" name="_template" value="table" />
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" placeholder="Votre nom" required />
+          </div>
+          <div class="form-group">
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="demande">Demande</label>
+          <select id="demande" name="demande" required>
+            <option value="" disabled selected>Sélectionnez votre demande</option>
+            <option value="Renseignements sur un modèle">Renseignements sur un modèle</option>
+            <option value="Commande personnalisée">Commande personnalisée</option>
+            <option value="Garantie / SAV">Garantie / SAV</option>
+            <option value="Partenariat">Partenariat</option>
+            <option value="Autre">Autre</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Décrivez votre demande..." required></textarea>
+        </div>
+
+        <div class="form-footer">
+          <button type="submit" class="btn btn-primary btn-large">Envoyer le message →</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
   <!-- FOOTER -->
-  <footer class="footer" id="contact">
+  <footer class="footer" id="footer">
     <div class="container footer-grid">
       <div class="footer-brand">
         <span class="logo-look">LOOK</span><span class="logo-divider"> MY </span><span class="logo-watch">WATCH</span>
