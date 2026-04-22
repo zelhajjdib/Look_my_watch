@@ -28,7 +28,7 @@
   --gold-dark:   #9A7B28;
   --gold-grad: linear-gradient(135deg, #9A7B28 0%, #C9A84C 30%, #F0CC6A 52%, #C9A84C 70%, #9A7B28 100%);
 
-  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-serif: 'Outfit', system-ui, sans-serif;
   --font-sans:  'Inter', system-ui, sans-serif;
   --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -191,20 +191,14 @@ a { color: inherit; text-decoration: none; }
 
 .logo {
   font-family: var(--font-serif);
-  font-size: 1.2rem;
-  font-weight: 900;
-  letter-spacing: 0.2em;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
   display: flex;
   align-items: baseline;
-  gap: 0.35rem;
+  gap: 0;
 }
 .logo-look { color: var(--white); }
-.logo-divider {
-  font-size: 0.7rem;
-  font-weight: 300;
-  color: rgba(255,255,255,0.3);
-  letter-spacing: 0.08em;
-}
 .logo-watch {
   background: var(--gold-grad);
   -webkit-background-clip: text;
@@ -985,19 +979,15 @@ a { color: inherit; text-decoration: none; }
 .footer-brand .logo-look {
   font-family: var(--font-serif);
   font-size: 1.1rem;
-  font-weight: 900;
-  letter-spacing: 0.18em;
+  font-weight: 700;
+  letter-spacing: 0.28em;
   color: var(--white);
-}
-.footer-brand .logo-divider {
-  color: rgba(255,255,255,0.2);
-  font-size: 0.85rem;
 }
 .footer-brand .logo-watch {
   font-family: var(--font-serif);
   font-size: 1.1rem;
-  font-weight: 900;
-  letter-spacing: 0.18em;
+  font-weight: 700;
+  letter-spacing: 0.28em;
   background: var(--gold-grad);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
